@@ -1,7 +1,7 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
-ARG VITE_API_BASE_URL=https://api.checklove.babyress.games/api
+ARG VITE_API_BASE_URL=https://api.lovestory.babyress.games/api
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 COPY package*.json ./

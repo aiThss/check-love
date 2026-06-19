@@ -2,9 +2,9 @@
 
 Guide này dùng 3 domain bạn đã có:
 
-- PWA: `checklove.babyress.games`
-- API: `api.checklove.babyress.games`
-- Admin: `admin.checklove.babyress.games`
+- PWA: `lovestory.babyress.games`
+- API: `api.lovestory.babyress.games`
+- Admin: `admin.lovestory.babyress.games`
 
 ## 1. Chuẩn bị DNS Cloudflare
 
@@ -12,9 +12,9 @@ Tạo 3 record trỏ về server chạy Dokploy:
 
 | Type | Name | Target |
 | --- | --- | --- |
-| A/CNAME | `checklove` | IP hoặc host Dokploy |
-| A/CNAME | `api.checklove` | IP hoặc host Dokploy |
-| A/CNAME | `admin.checklove` | IP hoặc host Dokploy |
+| A/CNAME | `lovestory` | IP hoặc host Dokploy |
+| A/CNAME | `api.lovestory` | IP hoặc host Dokploy |
+| A/CNAME | `admin.lovestory` | IP hoặc host Dokploy |
 
 Nếu dùng Cloudflare proxy, SSL nên để `Full` hoặc `Full (strict)` khi Dokploy đã cấp HTTPS.
 
@@ -32,12 +32,12 @@ Nếu dùng Cloudflare proxy, SSL nên để `Full` hoặc `Full (strict)` khi D
 NODE_ENV=production
 PORT=4000
 
-PUBLIC_WEB_BASE_URL=https://checklove.babyress.games
-PUBLIC_API_BASE_URL=https://api.checklove.babyress.games
-PUBLIC_ADMIN_BASE_URL=https://admin.checklove.babyress.games
-VITE_API_BASE_URL=https://api.checklove.babyress.games/api
+PUBLIC_WEB_BASE_URL=https://lovestory.babyress.games
+PUBLIC_API_BASE_URL=https://api.lovestory.babyress.games
+PUBLIC_ADMIN_BASE_URL=https://admin.lovestory.babyress.games
+VITE_API_BASE_URL=https://api.lovestory.babyress.games/api
 VITE_PUSH_PUBLIC_KEY=
-CORS_ORIGINS=https://checklove.babyress.games,https://admin.checklove.babyress.games
+CORS_ORIGINS=https://lovestory.babyress.games,https://admin.lovestory.babyress.games
 
 JWT_SECRET=doi-thanh-chuoi-random-that-dai
 MONGODB_URI=mongodb://mongo:27017/lovecheck
@@ -68,14 +68,14 @@ Trong Dokploy, map domain theo service:
 
 | Service | Domain | Internal port |
 | --- | --- | --- |
-| `pwa` | `checklove.babyress.games` | `80` |
-| `api` | `api.checklove.babyress.games` | `4000` |
-| `admin` | `admin.checklove.babyress.games` | `80` |
+| `pwa` | `lovestory.babyress.games` | `80` |
+| `api` | `api.lovestory.babyress.games` | `4000` |
+| `admin` | `admin.lovestory.babyress.games` | `80` |
 
 API health check:
 
 ```bash
-curl https://api.checklove.babyress.games/api/health
+curl https://api.lovestory.babyress.games/api/health
 ```
 
 Kết quả đúng:
@@ -89,8 +89,8 @@ Kết quả đúng:
 1. Bấm Deploy trong Dokploy.
 2. Chờ service `mongo`, `api`, `pwa`, `admin` lên healthy/running.
 3. Mở:
-   - `https://checklove.babyress.games`
-   - `https://admin.checklove.babyress.games`
+   - `https://lovestory.babyress.games`
+   - `https://admin.lovestory.babyress.games`
 4. Trên iPhone mở PWA bằng Safari, bấm Share rồi Add to Home Screen.
 
 ## 6. Backup

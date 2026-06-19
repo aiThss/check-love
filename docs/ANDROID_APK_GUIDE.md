@@ -9,7 +9,7 @@ games.babyress.checklove
 PWA production build mặc định gọi API:
 
 ```text
-https://api.checklove.babyress.games/api
+https://api.lovestory.babyress.games/api
 ```
 
 ## APK đã build sẵn local
@@ -23,7 +23,7 @@ D:\memory\check-in-luv\android\app\build\outputs\apk\debug\app-debug.apk
 SHA256:
 
 ```text
-3393B3DD1943172DD1EBDA43D9B07A88BC77C5112B93C64A01E4A1D3FFD6ECEB
+600A74AA6B94E72DA54BFEC28B9BF374AB18457E742BB6FE5DD92C6D1BC86D3C
 ```
 
 Debug APK đã được ký bằng debug key, có thể cài thử trực tiếp trên Android sau khi bật Install unknown apps.

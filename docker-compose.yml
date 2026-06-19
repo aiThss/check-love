@@ -33,7 +33,7 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
       args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://api.checklove.babyress.games/api}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://api.lovestory.babyress.games/api}
         VITE_PUSH_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
     restart: unless-stopped
     ports:
@@ -46,7 +46,7 @@ services:
       context: .
       dockerfile: apps/admin/Dockerfile
       args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://api.checklove.babyress.games/api}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://api.lovestory.babyress.games/api}
     restart: unless-stopped
     ports:
       - "8081:80"

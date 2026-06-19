@@ -12,9 +12,9 @@ PWA check-in riêng tư cho 1 cặp đôi, lấy cảm hứng từ Locket/BeReal
 
 ## Domain đang cấu hình
 
-- PWA: `https://checklove.babyress.games`
-- API: `https://api.checklove.babyress.games/api`
-- Admin: `https://admin.checklove.babyress.games`
+- PWA: `https://lovestory.babyress.games`
+- API: `https://api.lovestory.babyress.games/api`
+- Admin: `https://admin.lovestory.babyress.games`
 
 ## Chạy local
 
@@ -76,34 +76,34 @@ Guide nhanh nằm bên dưới. Bản chi tiết hơn: [`docs/DOKPLOY_DEPLOY_GUI
 3. Đặt `PUBLIC_*` và `CORS_ORIGINS` đúng domain production:
 
 ```env
-PUBLIC_WEB_BASE_URL=https://checklove.babyress.games
-PUBLIC_API_BASE_URL=https://api.checklove.babyress.games
-PUBLIC_ADMIN_BASE_URL=https://admin.checklove.babyress.games
-CORS_ORIGINS=https://checklove.babyress.games,https://admin.checklove.babyress.games
-VITE_API_BASE_URL=https://api.checklove.babyress.games/api
+PUBLIC_WEB_BASE_URL=https://lovestory.babyress.games
+PUBLIC_API_BASE_URL=https://api.lovestory.babyress.games
+PUBLIC_ADMIN_BASE_URL=https://admin.lovestory.babyress.games
+CORS_ORIGINS=https://lovestory.babyress.games,https://admin.lovestory.babyress.games
+VITE_API_BASE_URL=https://api.lovestory.babyress.games/api
 ```
 
 4. Deploy bằng `docker-compose.yml`.
 5. Trong Dokploy, gắn domain:
-   - service `pwa` -> `checklove.babyress.games`
-   - service `api` -> `api.checklove.babyress.games`
-   - service `admin` -> `admin.checklove.babyress.games`
+   - service `pwa` -> `lovestory.babyress.games`
+   - service `api` -> `api.lovestory.babyress.games`
+   - service `admin` -> `admin.lovestory.babyress.games`
 6. Bật HTTPS/SSL trong Dokploy.
-7. Kiểm tra health check: `https://api.checklove.babyress.games/api/health`.
+7. Kiểm tra health check: `https://api.lovestory.babyress.games/api/health`.
 
 ## DNS Cloudflare
 
 Tạo 3 record:
 
-- `A` hoặc `CNAME` cho `checklove.babyress.games` trỏ về server Dokploy.
-- `A` hoặc `CNAME` cho `api.checklove.babyress.games` trỏ về server Dokploy.
-- `A` hoặc `CNAME` cho `admin.checklove.babyress.games` trỏ về server Dokploy.
+- `A` hoặc `CNAME` cho `lovestory.babyress.games` trỏ về server Dokploy.
+- `A` hoặc `CNAME` cho `api.lovestory.babyress.games` trỏ về server Dokploy.
+- `A` hoặc `CNAME` cho `admin.lovestory.babyress.games` trỏ về server Dokploy.
 
 Nếu Dokploy tự cấp SSL qua Let's Encrypt, để proxy Cloudflare ở chế độ phù hợp với cấu hình SSL của server.
 
 ## Dùng trên iPhone
 
-1. Mở `https://checklove.babyress.games` bằng Safari.
+1. Mở `https://lovestory.babyress.games` bằng Safari.
 2. Bấm nút Share.
 3. Chọn Add to Home Screen.
 4. Mở icon LoveCheck ngoài màn hình chính.
