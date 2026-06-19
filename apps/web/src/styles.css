@@ -389,6 +389,7 @@ button:disabled {
 }
 
 .new-badge,
+.error-banner,
 .soft-badge {
   display: inline-flex;
   width: max-content;
@@ -402,6 +403,15 @@ button:disabled {
 
 .new-badge {
   padding: 9px 12px;
+}
+
+.error-banner {
+  width: 100%;
+  padding: 12px 14px;
+  border-color: rgba(255, 59, 127, 0.32);
+  border-radius: 18px;
+  background: var(--soft);
+  color: var(--accent);
 }
 
 .soft-badge {

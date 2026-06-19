@@ -20,7 +20,14 @@ export async function calculateCoupleStreak(coupleId: Types.ObjectId | string) {
 
   if (!rows.length) return 0;
 
-  const days = new Set(rows.map((row) => ymd(row.createdAt)));
+  const days = new Set(
+    rows
+      .map((row) => (row.createdAt instanceof Date ? row.createdAt : new Date(row.createdAt)))
+      .filter((date) => !Number.isNaN(date.getTime()))
+      .map(ymd)
+  );
+  if (!days.size) return 0;
+
   const today = addDays(new Date(), 0);
   let cursor = today;
 

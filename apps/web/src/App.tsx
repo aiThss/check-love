@@ -35,7 +35,7 @@ type AuthContextValue = {
   loading: boolean;
   blocked: boolean;
   completeAuth(token: string): Promise<void>;
-  refreshMe(): Promise<void>;
+  refreshMe(options?: { showLoading?: boolean }): Promise<void>;
   signOut(): void;
 };
 
@@ -112,13 +112,15 @@ function AuthProvider({ children }: { children: ReactNode }) {
     setBlocked(false);
   }, []);
 
-  const refreshMe = useCallback(async () => {
+  const refreshMe = useCallback(async (options?: { showLoading?: boolean }) => {
+    const showLoading = options?.showLoading ?? false;
+
     if (!getToken()) {
       setLoading(false);
       return;
     }
 
-    setLoading(true);
+    if (showLoading) setLoading(true);
     try {
       const response = await apiFetch<MeResponse>("/me");
       setMe(response);
@@ -132,7 +134,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
         signOut();
       }
     } finally {
-      setLoading(false);
+      if (showLoading) setLoading(false);
     }
   }, [signOut]);
 
@@ -140,13 +142,13 @@ function AuthProvider({ children }: { children: ReactNode }) {
     async (nextToken: string) => {
       saveToken(nextToken);
       setTokenState(nextToken);
-      await refreshMe();
+      await refreshMe({ showLoading: true });
     },
     [refreshMe]
   );
 
   useEffect(() => {
-    if (token) void refreshMe();
+    if (token) void refreshMe({ showLoading: true });
   }, [refreshMe, token]);
 
   const value = useMemo(
@@ -483,9 +485,11 @@ function HomePage() {
   const [streak, setStreak] = useState(0);
   const [loading, setLoading] = useState(true);
   const [hasNew, setHasNew] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const load = useCallback(async () => {
     setLoading(true);
+    setErrorMessage("");
     try {
       const response = await apiFetch<{ checkIn: CheckIn | null; streak: number }>("/checkins/latest-partner");
       setLatest(response.checkIn);
@@ -494,6 +498,8 @@ function HomePage() {
       setHasNew(Boolean(response.checkIn && response.checkIn.id !== seen));
       if (response.checkIn) localStorage.setItem("lovecheck.seenPartnerCheckin", response.checkIn.id);
       await refreshMe();
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "Không tải được check-in.");
     } finally {
       setLoading(false);
     }
@@ -525,6 +531,7 @@ function HomePage() {
       </div>
 
       {hasNew && <div className="new-badge">Có check-in mới</div>}
+      {errorMessage && <div className="error-banner">{errorMessage}</div>}
       <CheckInCard checkIn={latest} loading={loading} onReact={react} />
 
       <div className="stats-strip">

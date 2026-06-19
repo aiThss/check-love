@@ -46,6 +46,15 @@ function serializeCheckIn(checkIn: any) {
   };
 }
 
+async function getCoupleStreak(app: FastifyInstance, coupleId: Types.ObjectId | string) {
+  try {
+    return await calculateCoupleStreak(coupleId);
+  } catch (error) {
+    app.log.error({ err: error, coupleId: String(coupleId) }, "Failed to calculate couple streak");
+    return 0;
+  }
+}
+
 async function parseCheckInRequest(request: any, userId: string) {
   if (!request.isMultipart()) {
     return { data: checkInSchema.parse(request.body), uploaded: undefined };
@@ -81,7 +90,7 @@ export async function checkInRoutes(app: FastifyInstance) {
     const checkIn = await CheckIn.findOne({ coupleId: user.coupleId, deletedAt: { $exists: false } }).sort({
       createdAt: -1
     });
-    return { checkIn: checkIn ? serializeCheckIn(checkIn) : null, streak: await calculateCoupleStreak(user.coupleId) };
+    return { checkIn: checkIn ? serializeCheckIn(checkIn) : null, streak: await getCoupleStreak(app, user.coupleId) };
   });
 
   app.get("/checkins/latest-partner", { preHandler: app.authenticate }, async (request) => {
@@ -91,7 +100,7 @@ export async function checkInRoutes(app: FastifyInstance) {
       ownerId: { $ne: user._id },
       deletedAt: { $exists: false }
     }).sort({ createdAt: -1 });
-    return { checkIn: checkIn ? serializeCheckIn(checkIn) : null, streak: await calculateCoupleStreak(user.coupleId) };
+    return { checkIn: checkIn ? serializeCheckIn(checkIn) : null, streak: await getCoupleStreak(app, user.coupleId) };
   });
 
   app.get("/checkins", { preHandler: app.authenticate }, async (request) => {
@@ -127,7 +136,7 @@ export async function checkInRoutes(app: FastifyInstance) {
       });
 
       await notifyPartnerCheckIn(String(user.coupleId), user.id);
-      return { checkIn: serializeCheckIn(checkIn), streak: await calculateCoupleStreak(user.coupleId) };
+      return { checkIn: serializeCheckIn(checkIn), streak: await getCoupleStreak(app, user.coupleId) };
     }
   );
 
