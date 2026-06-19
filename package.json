@@ -1,0 +1,30 @@
+{
+  "name": "check-in-luv",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Private couple check-in PWA with Fastify API and admin dashboard.",
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "apps/admin"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @lovecheck/api",
+    "dev:api": "npm run dev -w @lovecheck/api",
+    "dev:web": "npm run dev -w @lovecheck/web",
+    "dev:admin": "npm run dev -w @lovecheck/admin",
+    "build": "npm run build -w @lovecheck/api && npm run build -w @lovecheck/web && npm run build -w @lovecheck/admin",
+    "typecheck": "npm run typecheck -w @lovecheck/api && npm run typecheck -w @lovecheck/web && npm run typecheck -w @lovecheck/admin",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "devDependencies": {
+    "png-to-ico": "^2.1.8",
+    "sharp": "^0.34.3"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

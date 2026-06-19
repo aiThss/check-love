@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">LoveCheck</title>
+  <desc id="desc">A black rounded app icon with a rose heart ping mark.</desc>
+  <rect width="1024" height="1024" rx="236" fill="#050505"/>
+  <circle cx="512" cy="512" r="305" fill="#FFFFFF" opacity="0.98"/>
+  <path fill="#FF3B7F" d="M512 707c-17-14-45-35-84-64-83-62-124-113-124-184 0-65 47-111 108-111 41 0 75 21 100 61 25-40 59-61 100-61 61 0 108 46 108 111 0 71-41 122-124 184-39 29-67 50-84 64Z"/>
+  <path fill="#050505" d="M512 624c-11-9-31-24-60-46-58-43-86-77-86-119 0-28 19-49 46-49 30 0 51 23 63 56h74c12-33 33-56 63-56 27 0 46 21 46 49 0 42-28 76-86 119-29 22-49 37-60 46Z" opacity="0.13"/>
+  <circle cx="725" cy="309" r="54" fill="#FF3B7F"/>
+</svg>
