@@ -20,8 +20,8 @@ services:
     environment:
       MONGODB_URI: ${MONGODB_URI:-mongodb://mongo:27017/lovecheck}
       UPLOAD_DIR: /app/uploads
-    ports:
-      - "4000:4000"
+    expose:
+      - "4000"
     volumes:
       - uploads:/app/uploads
     depends_on:
@@ -36,8 +36,8 @@ services:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://api.lovestory.babyress.games/api}
         VITE_PUSH_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
     restart: unless-stopped
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     depends_on:
       - api
 
@@ -48,8 +48,8 @@ services:
       args:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://api.lovestory.babyress.games/api}
     restart: unless-stopped
-    ports:
-      - "8081:80"
+    expose:
+      - "80"
     depends_on:
       - api
 

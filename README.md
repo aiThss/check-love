@@ -91,6 +91,8 @@ VITE_API_BASE_URL=https://api.lovestory.babyress.games/api
 6. Bật HTTPS/SSL trong Dokploy.
 7. Kiểm tra health check: `https://api.lovestory.babyress.games/api/health`.
 
+Compose production dùng internal `expose` thay vì host `ports`; Dokploy/Traefik sẽ route domain vào service, nên không cần chiếm port `8080`, `8081`, hay `4000` trên host.
+
 ## DNS Cloudflare
 
 Tạo 3 record:

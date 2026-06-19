@@ -72,6 +72,8 @@ Trong Dokploy, map domain theo service:
 | `api` | `api.lovestory.babyress.games` | `4000` |
 | `admin` | `admin.lovestory.babyress.games` | `80` |
 
+`docker-compose.yml` chỉ dùng `expose`, không publish host ports như `8080:80` hoặc `8081:80`. Dokploy/Traefik sẽ route domain vào internal port ở bảng trên, tránh lỗi `port is already allocated`.
+
 API health check:
 
 ```bash
