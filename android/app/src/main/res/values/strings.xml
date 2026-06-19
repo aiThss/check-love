@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">LoveCheck</string>
+    <string name="title_activity_main">LoveCheck</string>
+    <string name="package_name">games.babyress.checklove</string>
+    <string name="custom_url_scheme">games.babyress.checklove</string>
+</resources>

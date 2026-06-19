@@ -69,6 +69,8 @@ npx web-push generate-vapid-keys
 
 ## Deploy Dokploy
 
+Guide nhanh nằm bên dưới. Bản chi tiết hơn: [`docs/DOKPLOY_DEPLOY_GUIDE.md`](docs/DOKPLOY_DEPLOY_GUIDE.md).
+
 1. Tạo project mới trong Dokploy, trỏ repo/source này vào project.
 2. Copy `.env.example` thành `.env` và điền secret thật.
 3. Đặt `PUBLIC_*` và `CORS_ORIGINS` đúng domain production:
@@ -107,6 +109,16 @@ Nếu Dokploy tự cấp SSL qua Let's Encrypt, để proxy Cloudflare ở chế
 4. Mở icon LoveCheck ngoài màn hình chính.
 
 PWA có `manifest.webmanifest`, service worker, icon nhiều kích thước, `apple-touch-icon` và màn `/install`.
+
+## APK Android
+
+Project có Android wrapper bằng Capacitor tại `android/`. Build debug APK:
+
+```bash
+npm run build:apk
+```
+
+Guide chi tiết: [`docs/ANDROID_APK_GUIDE.md`](docs/ANDROID_APK_GUIDE.md).
 
 ## Backup
 

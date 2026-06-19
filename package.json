@@ -14,10 +14,17 @@
     "dev:web": "npm run dev -w @lovecheck/web",
     "dev:admin": "npm run dev -w @lovecheck/admin",
     "build": "npm run build -w @lovecheck/api && npm run build -w @lovecheck/web && npm run build -w @lovecheck/admin",
+    "build:apk": "npm run android:apk",
     "typecheck": "npm run typecheck -w @lovecheck/api && npm run typecheck -w @lovecheck/web && npm run typecheck -w @lovecheck/admin",
-    "icons": "node scripts/generate-icons.mjs"
+    "icons": "node scripts/generate-icons.mjs",
+    "android:assets": "node scripts/generate-android-assets.mjs",
+    "android:sync": "npm run build -w @lovecheck/web && npx cap sync android && npm run android:assets",
+    "android:apk": "npm run android:sync && cd android && gradlew.bat assembleDebug"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
     "png-to-ico": "^2.1.8",
     "sharp": "^0.34.3"
   },
@@ -26,5 +33,6 @@
   },
   "engines": {
     "node": ">=22"
-  }
+  },
+  "dependencies": {}
 }
